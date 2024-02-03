@@ -1,0 +1,335 @@
+// swift-tools-version:5.9
+import PackageDescription
+
+let package = Package(
+    name: "RDKitObjC",
+    platforms: [.iOS(.v14),.macOS(.v11),.visionOS(.v1)],
+    products: [
+        .library(name: "RDKit", targets: ["RDKit"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/JrGoodle/boost", from: "1.0.0"),
+    ],
+    targets: [
+        .binaryTarget(
+            name: "boost",
+            path: "boost.xcframework"
+        ),
+        .executableTarget(
+            name: "RDKitObjCTest",
+            dependencies: [
+                "RDKitObjC"
+            ],
+            resources: [
+                .process("Resources/input.mol")]
+        ),
+        .target(
+            name: "RDKitObjC",
+            dependencies: [
+                "RDKit"
+            ]
+        ),
+        .target(
+            name: "RDKit",
+            dependencies: [
+                "Abbreviations",
+                "Alignment",
+                "CIPLabeler",
+                "Catalogs",
+                "ChemReactions",
+                "ChemTransforms",
+                "ChemicalFeatures",
+                "DataStructs",
+                "Depictor",
+                "Deprotect",
+                "Descriptors",
+                "DistGeomHelpers",
+                "DistGeometry",
+                "EigenSolvers",
+                "FMCS",
+                "FileParsers",
+                "FilterCatalog",
+                "Fingerprints",
+                "ForceField",
+                "ForceFieldHelpers",
+                "FragCatalog",
+                "GeneralizedSubstruct",
+                "GenericGroups",
+                "GraphMol",
+                "InfoTheory",
+                "MMPA",
+                "MarvinParser",
+                "MolAlign",
+                "MolCatalog",
+                "MolChemicalFeatures",
+                "MolDraw2D",
+                "MolEnumerator",
+                "MolHash",
+                "MolInterchange",
+                "MolStandardize",
+                "MolTransforms",
+                "O3AAlign",
+                "Optimizer",
+                "PartialCharges",
+                "RDGeneral",
+                "RDGeometryLib",
+                "RDStreams",
+                "RGroupDecomposition",
+                "RascalMCES",
+                "ReducedGraphs",
+                "RingDecomposerLib",
+                "ScaffoldNetwork",
+                "ShapeHelpers",
+                "SimDivPickers",
+                "SmilesParse",
+                "Subgraphs",
+                "SubstructLibrary",
+                "SubstructMatch",
+                "TautomerQuery",
+                "Trajectory",
+                // "coordgen",
+                // "ga",
+                // "hc",
+                // "maeparser",
+                "boost"
+            ]
+        ),
+        .binaryTarget(
+            name: "Abbreviations",
+            path: "frameworks/Abbreviations.xcframework"
+        ),
+        .binaryTarget(
+            name: "Alignment",
+            path: "frameworks/Alignment.xcframework"
+        ),
+        .binaryTarget(
+            name: "CIPLabeler",
+            path: "frameworks/CIPLabeler.xcframework"
+        ),
+        .binaryTarget(
+            name: "Catalogs",
+            path: "frameworks/Catalogs.xcframework"
+        ),
+        .binaryTarget(
+            name: "ChemReactions",
+            path: "frameworks/ChemReactions.xcframework"
+        ),
+        .binaryTarget(
+            name: "ChemTransforms",
+            path: "frameworks/ChemTransforms.xcframework"
+        ),
+        .binaryTarget(
+            name: "ChemicalFeatures",
+            path: "frameworks/ChemicalFeatures.xcframework"
+        ),
+        .binaryTarget(
+            name: "DataStructs",
+            path: "frameworks/DataStructs.xcframework"
+        ),
+        .binaryTarget(
+            name: "Depictor",
+            path: "frameworks/Depictor.xcframework"
+        ),
+        .binaryTarget(
+            name: "Deprotect",
+            path: "frameworks/Deprotect.xcframework"
+        ),
+        .binaryTarget(
+            name: "Descriptors",
+            path: "frameworks/Descriptors.xcframework"
+        ),
+        .binaryTarget(
+            name: "DistGeomHelpers",
+            path: "frameworks/DistGeomHelpers.xcframework"
+        ),
+        .binaryTarget(
+            name: "DistGeometry",
+            path: "frameworks/DistGeometry.xcframework"
+        ),
+        .binaryTarget(
+            name: "EigenSolvers",
+            path: "frameworks/EigenSolvers.xcframework"
+        ),
+        .binaryTarget(
+            name: "FMCS",
+            path: "frameworks/FMCS.xcframework"
+        ),
+        .binaryTarget(
+            name: "FileParsers",
+            path: "frameworks/FileParsers.xcframework"
+        ),
+        .binaryTarget(
+            name: "FilterCatalog",
+            path: "frameworks/FilterCatalog.xcframework"
+        ),
+        .binaryTarget(
+            name: "Fingerprints",
+            path: "frameworks/Fingerprints.xcframework"
+        ),
+        .binaryTarget(
+            name: "ForceField",
+            path: "frameworks/ForceField.xcframework"
+        ),
+        .binaryTarget(
+            name: "ForceFieldHelpers",
+            path: "frameworks/ForceFieldHelpers.xcframework"
+        ),
+        .binaryTarget(
+            name: "FragCatalog",
+            path: "frameworks/FragCatalog.xcframework"
+        ),
+        .binaryTarget(
+            name: "GeneralizedSubstruct",
+            path: "frameworks/GeneralizedSubstruct.xcframework"
+        ),
+        .binaryTarget(
+            name: "GenericGroups",
+            path: "frameworks/GenericGroups.xcframework"
+        ),
+        .binaryTarget(
+            name: "GraphMol",
+            path: "frameworks/GraphMol.xcframework"
+        ),
+        .binaryTarget(
+            name: "InfoTheory",
+            path: "frameworks/InfoTheory.xcframework"
+        ),
+        .binaryTarget(
+            name: "MMPA",
+            path: "frameworks/MMPA.xcframework"
+        ),
+        .binaryTarget(
+            name: "MarvinParser",
+            path: "frameworks/MarvinParser.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolAlign",
+            path: "frameworks/MolAlign.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolCatalog",
+            path: "frameworks/MolCatalog.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolChemicalFeatures",
+            path: "frameworks/MolChemicalFeatures.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolDraw2D",
+            path: "frameworks/MolDraw2D.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolEnumerator",
+            path: "frameworks/MolEnumerator.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolHash",
+            path: "frameworks/MolHash.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolInterchange",
+            path: "frameworks/MolInterchange.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolStandardize",
+            path: "frameworks/MolStandardize.xcframework"
+        ),
+        .binaryTarget(
+            name: "MolTransforms",
+            path: "frameworks/MolTransforms.xcframework"
+        ),
+        .binaryTarget(
+            name: "O3AAlign",
+            path: "frameworks/O3AAlign.xcframework"
+        ),
+        .binaryTarget(
+            name: "Optimizer",
+            path: "frameworks/Optimizer.xcframework"
+        ),
+        .binaryTarget(
+            name: "PartialCharges",
+            path: "frameworks/PartialCharges.xcframework"
+        ),
+        .binaryTarget(
+            name: "RDGeneral",
+            path: "frameworks/RDGeneral.xcframework"
+        ),
+        .binaryTarget(
+            name: "RDGeometryLib",
+            path: "frameworks/RDGeometryLib.xcframework"
+        ),
+        .binaryTarget(
+            name: "RDStreams",
+            path: "frameworks/RDStreams.xcframework"
+        ),
+        .binaryTarget(
+            name: "RGroupDecomposition",
+            path: "frameworks/RGroupDecomposition.xcframework"
+        ),
+        .binaryTarget(
+            name: "RascalMCES",
+            path: "frameworks/RascalMCES.xcframework"
+        ),
+        .binaryTarget(
+            name: "ReducedGraphs",
+            path: "frameworks/ReducedGraphs.xcframework"
+        ),
+        .binaryTarget(
+            name: "RingDecomposerLib",
+            path: "frameworks/RingDecomposerLib.xcframework"
+        ),
+        .binaryTarget(
+            name: "ScaffoldNetwork",
+            path: "frameworks/ScaffoldNetwork.xcframework"
+        ),
+        .binaryTarget(
+            name: "ShapeHelpers",
+            path: "frameworks/ShapeHelpers.xcframework"
+        ),
+        .binaryTarget(
+            name: "SimDivPickers",
+            path: "frameworks/SimDivPickers.xcframework"
+        ),
+        .binaryTarget(
+            name: "SmilesParse",
+            path: "frameworks/SmilesParse.xcframework"
+        ),
+        .binaryTarget(
+            name: "Subgraphs",
+            path: "frameworks/Subgraphs.xcframework"
+        ),
+        .binaryTarget(
+            name: "SubstructLibrary",
+            path: "frameworks/SubstructLibrary.xcframework"
+        ),
+        .binaryTarget(
+            name: "SubstructMatch",
+            path: "frameworks/SubstructMatch.xcframework"
+        ),
+        .binaryTarget(
+            name: "TautomerQuery",
+            path: "frameworks/TautomerQuery.xcframework"
+        ),
+        .binaryTarget(
+            name: "Trajectory",
+            path: "frameworks/Trajectory.xcframework"
+        ),
+//        .binaryTarget(
+//            name: "coordgen",
+//            path: "frameworks/coordgen.xcframework"
+//        ),
+//        .binaryTarget(
+//            name: "ga",
+//            path: "frameworks/ga.xcframework"
+//        ),
+//        .binaryTarget(
+//            name: "hc",
+//            path: "frameworks/hc.xcframework"
+//        ),
+//        .binaryTarget(
+//            name: "maeparser",
+//            path: "frameworks/maeparser.xcframework"
+//        )
+    ],
+    cxxLanguageStandard: .cxx17
+)
