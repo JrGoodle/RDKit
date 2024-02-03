@@ -8,6 +8,7 @@ export RDBASE
 RDBASE="$(pwd)/rdkit"
 BOOST_IOSX_DIR="$(pwd)/boost/boost-iosx"
 BOOST_DIR="${BOOST_IOSX_DIR}/boost"
+IOS_CMAKE_DIR="$(pwd)/ios-cmake"
 
 BUILD_DIR="$(pwd)/build"
 INSTALL_DIR="$(pwd)/stage"
@@ -30,7 +31,7 @@ build_libs() {
 
     cmake ../.. \
         -G Xcode \
-        -DCMAKE_TOOLCHAIN_FILE="$PARENT_DIR/ios-cmake/ios.toolchain.cmake" \
+        -DCMAKE_TOOLCHAIN_FILE="${IOS_CMAKE_DIR}/ios.toolchain.cmake" \
         -DPLATFORM="${cmake_platform}" \
         -DBoost_ROOT="$boost_libs" \
         -DBoost_NO_SYSTEM_PATHS=ON \

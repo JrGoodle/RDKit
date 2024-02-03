@@ -4,3 +4,6 @@
 [submodule "rdkit"]
 	path = rdkit
 	url = https://github.com/rdkit/rdkit.git
+[submodule "ios-cmake"]
+	path = ios-cmake
+	url = https://github.com/JrGoodle/ios-cmake.git
