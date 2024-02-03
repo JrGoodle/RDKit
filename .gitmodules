@@ -1,3 +1,6 @@
 [submodule "boost"]
 	path = boost
 	url = https://github.com/JrGoodle/boost.git
+[submodule "rdkit"]
+	path = rdkit
+	url = https://github.com/rdkit/rdkit.git
