@@ -10,8 +10,8 @@ BOOST_IOSX_DIR="$(pwd)/boost/boost-iosx"
 BOOST_DIR="${BOOST_IOSX_DIR}/boost"
 IOS_CMAKE_DIR="$(pwd)/ios-cmake"
 
-BUILD_DIR="$(pwd)/build"
-INSTALL_DIR="$(pwd)/stage"
+BUILD_DIR="${RDBASE}/build"
+INSTALL_DIR="${RDBASE}/stage"
 
 build_libs() {
     local target=$1
