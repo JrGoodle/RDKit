@@ -27,15 +27,15 @@ done
 
 xcodebuild -create-xcframework \
     -library "${STAGE_DIR}/macosx/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/macosx/include" \
+    -headers "${STAGE_DIR}/macosx/include/rdkit" \
     -library "${STAGE_DIR}/ios/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/ios/include" \
+    -headers "${STAGE_DIR}/ios/include/rdkit" \
     -library "${STAGE_DIR}/iossim/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/iossim/include" \
+    -headers "${STAGE_DIR}/iossim/include/rdkit" \
     -library "${STAGE_DIR}/xros/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/xros/include" \
+    -headers "${STAGE_DIR}/xros/include/rdkit" \
     -library "${STAGE_DIR}/xrossim/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/xrossim/include" \
+    -headers "${STAGE_DIR}/xrossim/include/rdkit" \
     -output "$(pwd)/RDKit.xcframework"
 
 zip -r RDKit.xcframework.zip RDKit.xcframework
