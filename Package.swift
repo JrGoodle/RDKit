@@ -4,7 +4,7 @@ import PackageDescription
 
 let version = "2023.9.4"
 let moduleName = "RDKit"
-let checksum = ""
+let checksum = "c6a5b631705ffe19a1abe8515e4af11001e9752aa3449fbd97dee98491d97c90"
 
 let package = Package(
     name: moduleName,
