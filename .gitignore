@@ -1,5 +1,8 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,synology,c++,swiftpackagemanager,swift,xcode
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,synology,c++,swiftpackagemanager,swift,xcode
+/build
+/stage
+
+# Created by https://www.toptal.com/developers/gitignore/api/c++,macos,swift,xcode,synology
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,macos,swift,xcode,synology
 
 ### C++ ###
 # Prerequisites
@@ -152,12 +155,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-### SwiftPackageManager ###
-Packages
-xcuserdata
-*.xcodeproj
-
-
 ### Synology ###
 # Thumbnails
 @eaDir
@@ -177,4 +174,4 @@ xcuserdata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,synology,c++,swiftpackagemanager,swift,xcode
+# End of https://www.toptal.com/developers/gitignore/api/c++,macos,swift,xcode,synology
