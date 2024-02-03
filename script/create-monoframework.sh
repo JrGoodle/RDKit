@@ -3,18 +3,13 @@
 set -euo pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
-# BOOST_IOSX_DIR="$(pwd)/boost-iosx"
-# BOOST_DIR="${BOOST_IOSX_DIR}/boost"
-# BOOST_STAGE_DIR="$BOOST_DIR/stage"
-FRAMEWORKS_DIR="$(pwd)/frameworks"
-STAGE_DIR="$(pwd)/stage"
+RDBASE="$(pwd)/rdkit"
+STAGE_DIR="${RDBASE}/stage"
 
 combine_static_libs() {
     local PLATFORM_NAME="$1"
 
-    COMBINED_OUTPUT_DIR="$STAGE_DIR/$PLATFORM_NAME/lib"
-    mkdir -p "$COMBINED_OUTPUT_DIR"
-    libtool -static -o "$COMBINED_OUTPUT_DIR/libRDKit.a" "$BOOST_STAGE_DIR/$PLATFORM_NAME/lib/"*.a
+    libtool -static -o "$STAGE_DIR/$PLATFORM_NAME/lib/libRDKit.a" "$STAGE_DIR/$PLATFORM_NAME/lib/"*.a
 }
 
 platforms=(
@@ -31,18 +26,16 @@ for platform in "${platforms[@]}"; do
 done
 
 xcodebuild -create-xcframework \
-    -library "$STAGE_DIR/macosx/lib/libRDKit.a" \
-    -headers "$FRAMEWORKS_DIR/Headers" \
-    -library "$STAGE_DIR/catalyst/lib/libRDKit.a" \
-    -headers "$FRAMEWORKS_DIR/Headers" \
-    -library "$STAGE_DIR/ios/lib/libRDKit.a" \
-    -headers "$FRAMEWORKS_DIR/Headers" \
-    -library "$STAGE_DIR/iossim/lib/libRDKit.a" \
-    -headers "$FRAMEWORKS_DIR/Headers" \
-    -library "$STAGE_DIR/xros/lib/libRDKit.a" \
-    -headers "$FRAMEWORKS_DIR/Headers" \
-    -library "$STAGE_DIR/xrossim/lib/libRDKit.a" \
-    -headers "$FRAMEWORKS_DIR/Headers" \
+    -library "${STAGE_DIR}/macosx/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/macosx/include" \
+    -library "${STAGE_DIR}/ios/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/ios/include" \
+    -library "${STAGE_DIR}/iossim/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/iossim/include" \
+    -library "${STAGE_DIR}/xros/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/xros/include" \
+    -library "${STAGE_DIR}/xrossim/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/xrossim/include" \
     -output "$(pwd)/RDKit.xcframework"
 
 zip -r RDKit.xcframework.zip RDKit.xcframework

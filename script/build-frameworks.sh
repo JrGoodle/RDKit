@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1091
 
-# set -euo pipefail
-set -e
+set -euo pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
-
-# TODO: Build libs
 
 export RDBASE
 RDBASE="$(pwd)/rdkit"
@@ -13,9 +10,8 @@ RDBASE="$(pwd)/rdkit"
 echo creating frameworks...
 
 INSTALL_DIR="${RDBASE}/stage"
-FRAMEWORKS_DIR="${RDBASE}/frameworks"
+FRAMEWORKS_DIR="$(pwd)/frameworks"
 
-rm -rf "$FRAMEWORKS_DIR"
 mkdir -p "$FRAMEWORKS_DIR"
 
 build_xcframework() {
@@ -27,7 +23,7 @@ build_xcframework() {
         "${INSTALL_DIR}/macosx-x86_64/lib/libRDKit${library_name}_static.a" \
         -output "${INSTALL_DIR}/macosx/lib/libRDKit${library_name}_static.a"
 
-    cp -R "${INSTALL_DIR}/macosx-arm64/include" "${INSTALL_DIR}/macosx/include"
+    cp -R "${INSTALL_DIR}/macosx-arm64/include/" "${INSTALL_DIR}/macosx/include/"
 
     mkdir -p "${INSTALL_DIR}/iossim/lib"
 	lipo -create \
@@ -35,7 +31,7 @@ build_xcframework() {
         "${INSTALL_DIR}/iossim-x86_64/lib/libRDKit${library_name}_static.a" \
         -output "${INSTALL_DIR}/iossim/lib/libRDKit${library_name}_static.a"
 
-    cp -R "${INSTALL_DIR}/iossim-arm64/include" "${INSTALL_DIR}/iossim/include"
+    cp -R "${INSTALL_DIR}/iossim-arm64/include/" "${INSTALL_DIR}/iossim/include/"
 
     mkdir -p "${INSTALL_DIR}/xrossim/lib"
 	lipo -create \
@@ -43,7 +39,7 @@ build_xcframework() {
         "${INSTALL_DIR}/xrossim-x86_64/lib/libRDKit${library_name}_static.a" \
         -output "${INSTALL_DIR}/xrossim/lib/libRDKit${library_name}_static.a"
 
-    cp -R "${INSTALL_DIR}/xrossim-arm64/include" "${INSTALL_DIR}/xrossim/include"
+    cp -R "${INSTALL_DIR}/xrossim-arm64/include/" "${INSTALL_DIR}/xrossim/include/"
 
     xcodebuild -create-xcframework \
         -library "${INSTALL_DIR}/macosx/lib/libRDKit${library_name}_static.a" \
