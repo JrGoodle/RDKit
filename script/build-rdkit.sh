@@ -78,24 +78,24 @@ install_libs() {
     xcodebuild -target install -configuration Release -sdk "${sdk}" -destination "${destination}"
 }
 
-# build_libs catalyst-arm64 MAC_CATALYST_ARM64
-# build_libs catalyst-x86_64 MAC_CATALYST
-build_libs macosx-arm64 MAC_ARM64
-# build_libs macosx-x86_64 MAC
-build_libs iossim-arm64 SIMULATORARM64
-# build_libs iossim-x86_64 SIMULATOR64
-build_libs ios-arm64 OS64
-build_libs xrossim-arm64 SIMULATOR_VISIONOS
-# build_libs xrossim-x86_64 SIMULATOR64_VISIONOS
+# # build_libs catalyst-arm64 MAC_CATALYST_ARM64
+# # build_libs catalyst-x86_64 MAC_CATALYST
+# build_libs macosx-arm64 MAC_ARM64
+# # build_libs macosx-x86_64 MAC
+# build_libs iossim-arm64 SIMULATORARM64
+# # build_libs iossim-x86_64 SIMULATOR64
+# build_libs ios-arm64 OS64
+# build_libs xrossim-arm64 SIMULATOR_VISIONOS
+# # build_libs xrossim-x86_64 SIMULATOR64_VISIONOS
 build_libs xros-arm64 VISIONOS
 
-# install_libs catalyst-arm64 macosx 'generic/platform=macOS,variant=Mac Catalyst'
-# install_libs catalyst-x86_64 macosx 'generic/platform=macOS,variant=Mac Catalyst'
-install_libs macosx-arm64 macosx 'generic/platform=macOS'
-# install_libs macosx-x86_64 macosx 'generic/platform=macOS'
-install_libs iossim-arm64 iphonesimulator 'generic/platform=iOS Simulator'
-# install_libs iossim-x86_64 iphonesimulator 'generic/platform=iOS Simulator'
-install_libs ios-arm64 iphoneos 'generic/platform=iOS'
-install_libs xrossim-arm64 xrsimulator 'generic/platform=visionOS Simulator'
-# install_libs xrossim-x86_64 xrsimulator 'generic/platform=visionOS Simulator'
+# # install_libs catalyst-arm64 macosx 'generic/platform=macOS,variant=Mac Catalyst'
+# # install_libs catalyst-x86_64 macosx 'generic/platform=macOS,variant=Mac Catalyst'
+# install_libs macosx-arm64 macosx 'generic/platform=macOS'
+# # install_libs macosx-x86_64 macosx 'generic/platform=macOS'
+# install_libs iossim-arm64 iphonesimulator 'generic/platform=iOS Simulator'
+# # install_libs iossim-x86_64 iphonesimulator 'generic/platform=iOS Simulator'
+# install_libs ios-arm64 iphoneos 'generic/platform=iOS'
+# install_libs xrossim-arm64 xrsimulator 'generic/platform=visionOS Simulator'
+# # install_libs xrossim-x86_64 xrsimulator 'generic/platform=visionOS Simulator'
 install_libs xros-arm64 xros 'generic/platform=visionOS'
