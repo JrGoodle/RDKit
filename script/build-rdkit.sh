@@ -28,11 +28,13 @@ build_libs() {
 
     local boost_libs="$BOOST_DIR/stage/${target}/lib"
     local boost_headers="$BOOST_IOSX_DIR/frameworks/Headers"
+    local boost_cmake="$boost_libs/cmake/Boost-1.89.0"
 
     cmake ../.. \
         -G Xcode \
         -DCMAKE_TOOLCHAIN_FILE="${IOS_CMAKE_DIR}/ios.toolchain.cmake" \
         -DPLATFORM="${cmake_platform}" \
+        -DCMAKE_PREFIX_PATH="$boost_cmake" \
         -DBoost_ROOT="$boost_libs" \
         -DBoost_NO_SYSTEM_PATHS=ON \
         -DBoost_LIBRARIES="$boost_libs" \
@@ -79,21 +81,21 @@ install_libs() {
 # build_libs catalyst-arm64 MAC_CATALYST_ARM64
 # build_libs catalyst-x86_64 MAC_CATALYST
 build_libs macosx-arm64 MAC_ARM64
-build_libs macosx-x86_64 MAC
+# build_libs macosx-x86_64 MAC
 build_libs iossim-arm64 SIMULATORARM64
-build_libs iossim-x86_64 SIMULATOR64
-build_libs ios OS64
+# build_libs iossim-x86_64 SIMULATOR64
+build_libs ios-arm64 OS64
 build_libs xrossim-arm64 SIMULATOR_VISIONOS
-build_libs xrossim-x86_64 SIMULATOR64_VISIONOS
-build_libs xros VISIONOS
+# build_libs xrossim-x86_64 SIMULATOR64_VISIONOS
+build_libs xros-arm64 VISIONOS
 
 # install_libs catalyst-arm64 macosx 'generic/platform=macOS,variant=Mac Catalyst'
 # install_libs catalyst-x86_64 macosx 'generic/platform=macOS,variant=Mac Catalyst'
 install_libs macosx-arm64 macosx 'generic/platform=macOS'
-install_libs macosx-x86_64 macosx 'generic/platform=macOS'
+# install_libs macosx-x86_64 macosx 'generic/platform=macOS'
 install_libs iossim-arm64 iphonesimulator 'generic/platform=iOS Simulator'
-install_libs iossim-x86_64 iphonesimulator 'generic/platform=iOS Simulator'
-install_libs ios iphoneos 'generic/platform=iOS'
+# install_libs iossim-x86_64 iphonesimulator 'generic/platform=iOS Simulator'
+install_libs ios-arm64 iphoneos 'generic/platform=iOS'
 install_libs xrossim-arm64 xrsimulator 'generic/platform=visionOS Simulator'
-install_libs xrossim-x86_64 xrsimulator 'generic/platform=visionOS Simulator'
-install_libs xros xros 'generic/platform=visionOS'
+# install_libs xrossim-x86_64 xrsimulator 'generic/platform=visionOS Simulator'
+install_libs xros-arm64 xros 'generic/platform=visionOS'
