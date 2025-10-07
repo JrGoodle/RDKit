@@ -7,3 +7,6 @@
 [submodule "ios-cmake"]
 	path = ios-cmake
 	url = https://github.com/JrGoodle/ios-cmake.git
+[submodule "icu4c-iosx"]
+	path = icu4c-iosx
+	url = git@github.com:apotocki/icu4c-iosx.git
