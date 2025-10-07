@@ -29,6 +29,30 @@ build_libs() {
     local boost_libs="$BOOST_DIR/stage/${target}/lib"
     local boost_headers="$BOOST_IOSX_DIR/frameworks/Headers"
     local boost_cmake="$boost_libs/cmake/Boost-1.89.0"
+    local icu_path="$BOOST_IOSX_DIR/scripts/Pods/icu4c-iosx/product"
+
+    # Determine ICU library path based on target
+    local icu_lib_dir=""
+    case $target in
+        macosx-arm64)
+            icu_lib_dir="$icu_path/frameworks/icudata.xcframework/macos-arm64"
+            ;;
+        ios-arm64)
+            icu_lib_dir="$icu_path/frameworks/icudata.xcframework/ios-arm64"
+            ;;
+        iossim-arm64)
+            icu_lib_dir="$icu_path/frameworks/icudata.xcframework/ios-arm64-simulator"
+            ;;
+        xros-arm64)
+            icu_lib_dir="$icu_path/frameworks/icudata.xcframework/xros-arm64"
+            ;;
+        xrossim-arm64)
+            icu_lib_dir="$icu_path/frameworks/icudata.xcframework/xros-arm64-simulator"
+            ;;
+    esac
+
+    local icu_i18n_dir="${icu_lib_dir/icudata/icui18n}"
+    local icu_uc_dir="${icu_lib_dir/icudata/icuuc}"
 
     cmake ../.. \
         -G Xcode \
@@ -40,10 +64,12 @@ build_libs() {
         -DBoost_LIBRARIES="$boost_libs" \
         -DBoost_INCLUDE_DIR="$boost_headers" \
         -DBoost_USE_STATIC_LIBS=ON \
+        "-DCMAKE_XCODE_ATTRIBUTE_LIBRARY_SEARCH_PATHS=${icu_lib_dir} ${icu_i18n_dir} ${icu_uc_dir}" \
         -DRDK_BUILD_FREETYPE_SUPPORT=OFF \
         -DRDK_BUILD_PYTHON_WRAPPERS=OFF \
         -DRDK_BUILD_COORDGEN_SUPPORT=OFF \
         -DRDK_BUILD_MAEPARSER_SUPPORT=OFF \
+        -DRDK_BUILD_CHEMDRAW_SUPPORT=OFF \
         -DRDK_OPTIMIZE_POPCNT=OFF \
         -DRDK_BUILD_TEST_GZIP=OFF \
         -DRDK_BUILD_FREESASA_SUPPORT=OFF \
