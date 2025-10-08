@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
 rm -rf \
-    boost/boost-iosx/-*.tar.* \
+    boost/boost-iosx/*.tar.* \
     boost/boost-iosx/boost \
     boost/boost-iosx/frameworks \
     boost/boost-iosx/scripts/Pods \
