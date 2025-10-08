@@ -14,11 +14,11 @@ combine_static_libs() {
 
 platforms=(
     # 'catalyst'
-    'ios'
-    'iossim'
-    'macosx'
-    'xros'
-    'xrossim'
+    'ios-arm64'
+    'iossim-arm64'
+    'macosx-arm64'
+    'xros-arm64'
+    'xrossim-arm64'
 )
 
 for platform in "${platforms[@]}"; do
@@ -26,16 +26,16 @@ for platform in "${platforms[@]}"; do
 done
 
 xcodebuild -create-xcframework \
-    -library "${STAGE_DIR}/macosx/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/macosx/include/rdkit" \
-    -library "${STAGE_DIR}/ios/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/ios/include/rdkit" \
-    -library "${STAGE_DIR}/iossim/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/iossim/include/rdkit" \
-    -library "${STAGE_DIR}/xros/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/xros/include/rdkit" \
-    -library "${STAGE_DIR}/xrossim/lib/libRDKit.a" \
-    -headers "${STAGE_DIR}/xrossim/include/rdkit" \
+    -library "${STAGE_DIR}/macosx-arm64/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/macosx-arm64/include/rdkit" \
+    -library "${STAGE_DIR}/ios-arm64/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/ios-arm64/include/rdkit" \
+    -library "${STAGE_DIR}/iossim-arm64/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/iossim-arm64/include/rdkit" \
+    -library "${STAGE_DIR}/xros-arm64/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/xros-arm64/include/rdkit" \
+    -library "${STAGE_DIR}/xrossim-arm64/lib/libRDKit.a" \
+    -headers "${STAGE_DIR}/xrossim-arm64/include/rdkit" \
     -output "$(pwd)/RDKit.xcframework"
 
 zip -r RDKit.xcframework.zip RDKit.xcframework
